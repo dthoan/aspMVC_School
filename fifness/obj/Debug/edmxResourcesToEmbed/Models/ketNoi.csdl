@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="fifnessModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BAIVIET">
+    <Key>
+      <PropertyRef Name="MABV" />
+    </Key>
+    <Property Name="MABV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENBV" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NOIDUNG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HINH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="NGAYVIET" Type="DateTime" Precision="3" />
+    <Property Name="MACD" Type="Int32" />
+    <NavigationProperty Name="CHUDE" Relationship="Self.FK_BAIVIET_CHUDE" FromRole="BAIVIET" ToRole="CHUDE" />
+    <Property Name="LANGUEGE" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="LANGUEGE1" Relationship="fifnessModel.FK_BAIVIET_LANGUEGE" FromRole="BAIVIET" ToRole="LANGUEGE" />
+  </EntityType>
+  <EntityType Name="CHUCVU">
+    <Key>
+      <PropertyRef Name="MACV" />
+    </Key>
+    <Property Name="MACV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENCV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MANV" Type="Int32" />
+    <NavigationProperty Name="NHANVIENs" Relationship="Self.FK_NHANVIEN_CHUCVU" FromRole="CHUCVU" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="CHUDE">
+    <Key>
+      <PropertyRef Name="MACD" />
+    </Key>
+    <Property Name="MACD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENCD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MABV" Type="Int32" />
+    <Property Name="MANV" Type="Int32" />
+    <NavigationProperty Name="BAIVIETs" Relationship="Self.FK_BAIVIET_CHUDE" FromRole="CHUDE" ToRole="BAIVIET" />
+    <NavigationProperty Name="NHANVIEN" Relationship="Self.FK_CHUDE_NHANVIEN" FromRole="CHUDE" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="MAKH" />
+    </Key>
+    <Property Name="MAKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENKH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYSINH" Type="DateTime" Precision="3" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GIOITINH" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="MANV" Type="Int32" />
+    <Property Name="MATV" Type="Int32" />
+    <Property Name="NHANXET" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HINH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MAKHID" Type="Int32" />
+    <NavigationProperty Name="KHUYENMAI" Relationship="Self.FK_KHACHHANG_KHUYENMAI" FromRole="KHACHHANG" ToRole="KHUYENMAI" />
+    <NavigationProperty Name="NHANVIEN" Relationship="Self.FK_KHACHHANG_NHANVIEN" FromRole="KHACHHANG" ToRole="NHANVIEN" />
+    <NavigationProperty Name="THANHVIENs" Relationship="Self.FK_THANHVIEN_KHACHHANG" FromRole="KHACHHANG" ToRole="THANHVIEN" />
+  </EntityType>
+  <EntityType Name="KHUYENMAI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HINH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NOIDUNG" Type="String" MaxLength="170" FixedLength="false" Unicode="true" />
+    <Property Name="MAKH" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="GIAMGIA" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="KHACHHANGs" Relationship="Self.FK_KHACHHANG_KHUYENMAI" FromRole="KHUYENMAI" ToRole="KHACHHANG" />
+  </EntityType>
+  <EntityType Name="LOGIN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENNV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="GIOITINH" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="DIACHI" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="HINH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MAKH" Type="Int32" />
+    <Property Name="GIOITHIEU" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="MACV" Type="Int32" />
+    <Property Name="HINHmh" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CHUCVU" Relationship="Self.FK_NHANVIEN_CHUCVU" FromRole="NHANVIEN" ToRole="CHUCVU" />
+    <NavigationProperty Name="CHUDEs" Relationship="Self.FK_CHUDE_NHANVIEN" FromRole="NHANVIEN" ToRole="CHUDE" />
+    <NavigationProperty Name="KHACHHANGs" Relationship="Self.FK_KHACHHANG_NHANVIEN" FromRole="NHANVIEN" ToRole="KHACHHANG" />
+    <NavigationProperty Name="QUANGCAOs" Relationship="Self.FK_QUANGCAO_NHANVIEN" FromRole="NHANVIEN" ToRole="QUANGCAO" />
+    <NavigationProperty Name="USERs" Relationship="fifnessModel.FK_USER_NHANVIEN" FromRole="NHANVIEN" ToRole="USER" />
+    <Property Name="LANGUEGE" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="QUANGCAO">
+    <Key>
+      <PropertyRef Name="MAQC" />
+    </Key>
+    <Property Name="MAQC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BAIVIET" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MANV" Type="Int32" />
+    <NavigationProperty Name="NHANVIEN" Relationship="Self.FK_QUANGCAO_NHANVIEN" FromRole="QUANGCAO" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="THANHVIEN">
+    <Key>
+      <PropertyRef Name="MATV" />
+    </Key>
+    <Property Name="MATV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LOAITV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MAKH" Type="Int32" />
+    <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_THANHVIEN_KHACHHANG" FromRole="THANHVIEN" ToRole="KHACHHANG" />
+  </EntityType>
+  <EntityType Name="USER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NHAPLAIPASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DIACHI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ThongBao" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="MANV" Type="Int32" />
+    <Property Name="TRANGTHAI" Type="Boolean" />
+    <NavigationProperty Name="NHANVIEN" Relationship="fifnessModel.FK_USER_NHANVIEN" FromRole="USER" ToRole="NHANVIEN" />
+  </EntityType>
+  <Association Name="FK_BAIVIET_CHUDE">
+    <End Role="CHUDE" Type="Self.CHUDE" Multiplicity="0..1" />
+    <End Role="BAIVIET" Type="Self.BAIVIET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHUDE">
+        <PropertyRef Name="MACD" />
+      </Principal>
+      <Dependent Role="BAIVIET">
+        <PropertyRef Name="MACD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NHANVIEN_CHUCVU">
+    <End Role="CHUCVU" Type="Self.CHUCVU" Multiplicity="0..1" />
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHUCVU">
+        <PropertyRef Name="MACV" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="MACV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CHUDE_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="CHUDE" Type="Self.CHUDE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="CHUDE">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KHACHHANG_KHUYENMAI">
+    <End Role="KHUYENMAI" Type="Self.KHUYENMAI" Multiplicity="0..1" />
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHUYENMAI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="KHACHHANG">
+        <PropertyRef Name="MAKHID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KHACHHANG_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="KHACHHANG">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_THANHVIEN_KHACHHANG">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+    <End Role="THANHVIEN" Type="Self.THANHVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="THANHVIEN">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QUANGCAO_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="QUANGCAO" Type="Self.QUANGCAO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="QUANGCAO">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="fifnessEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BAIVIETs" EntityType="Self.BAIVIET" />
+    <EntitySet Name="CHUCVUs" EntityType="Self.CHUCVU" />
+    <EntitySet Name="CHUDEs" EntityType="Self.CHUDE" />
+    <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
+    <EntitySet Name="KHUYENMAIs" EntityType="Self.KHUYENMAI" />
+    <EntitySet Name="LOGINs" EntityType="Self.LOGIN" />
+    <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+    <EntitySet Name="QUANGCAOs" EntityType="Self.QUANGCAO" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="THANHVIENs" EntityType="Self.THANHVIEN" />
+    <EntitySet Name="USERs" EntityType="Self.USER" />
+    <AssociationSet Name="FK_BAIVIET_CHUDE" Association="Self.FK_BAIVIET_CHUDE">
+      <End Role="CHUDE" EntitySet="CHUDEs" />
+      <End Role="BAIVIET" EntitySet="BAIVIETs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NHANVIEN_CHUCVU" Association="Self.FK_NHANVIEN_CHUCVU">
+      <End Role="CHUCVU" EntitySet="CHUCVUs" />
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CHUDE_NHANVIEN" Association="Self.FK_CHUDE_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="CHUDE" EntitySet="CHUDEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KHACHHANG_KHUYENMAI" Association="Self.FK_KHACHHANG_KHUYENMAI">
+      <End Role="KHUYENMAI" EntitySet="KHUYENMAIs" />
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KHACHHANG_NHANVIEN" Association="Self.FK_KHACHHANG_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_THANHVIEN_KHACHHANG" Association="Self.FK_THANHVIEN_KHACHHANG">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="THANHVIEN" EntitySet="THANHVIENs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QUANGCAO_NHANVIEN" Association="Self.FK_QUANGCAO_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="QUANGCAO" EntitySet="QUANGCAOs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USER_NHANVIEN" Association="fifnessModel.FK_USER_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="USER" EntitySet="USERs" />
+    </AssociationSet>
+    <EntitySet Name="LANGUEGEs" EntityType="fifnessModel.LANGUEGE" />
+    <AssociationSet Name="FK_BAIVIET_LANGUEGE" Association="fifnessModel.FK_BAIVIET_LANGUEGE">
+      <End Role="LANGUEGE" EntitySet="LANGUEGEs" />
+      <End Role="BAIVIET" EntitySet="BAIVIETs" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_USER_NHANVIEN">
+    <End Type="fifnessModel.NHANVIEN" Role="NHANVIEN" Multiplicity="0..1" />
+    <End Type="fifnessModel.USER" Role="USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="USER">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="LANGUEGE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="isDefault" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BAIVIETs" Relationship="fifnessModel.FK_BAIVIET_LANGUEGE" FromRole="LANGUEGE" ToRole="BAIVIET" />
+  </EntityType>
+  <Association Name="FK_BAIVIET_LANGUEGE">
+    <End Type="fifnessModel.LANGUEGE" Role="LANGUEGE" Multiplicity="0..1" />
+    <End Type="fifnessModel.BAIVIET" Role="BAIVIET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LANGUEGE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BAIVIET">
+        <PropertyRef Name="LANGUEGE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

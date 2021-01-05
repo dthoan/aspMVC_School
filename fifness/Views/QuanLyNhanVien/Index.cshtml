@@ -1,0 +1,112 @@
+﻿@model PagedList.PagedList<fifness.Models.NHANVIEN>
+@using PagedList.Mvc;
+@using fifness.Models
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>QUẢN LÝ NHÂN VIÊN</h2>
+
+<p>
+    @Html.ActionLink("Thêm Nhân Viên", "ThemMoi")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MANV)
+            
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TENNV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SDT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().GIOITINH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DIACHI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().HINH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MAKH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().GIOITHIEU)
+        </th>
+       
+       
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MANV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TENNV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GIOITINH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DIACHI)
+            </td>
+            <td>
+                <img src="~/img/img_Content/@item.HINHmh"/>
+                @*@Html.DisplayFor(modelItem => item.HINH)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MAKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GIOITHIEU)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MACV)
+            </td>
+            <td>
+                <img src="~/img/img_Content/@item.HINHmh"/>
+            </td>
+            <td>
+                @Html.ActionLink("Chỉnh sửa", "Edit", new { id=item.MANV}) |
+                @Html.ActionLink("Hiện thị", "Details", new { id = item.MANV }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.MANV })
+            </td>
+        </tr>
+    }
+
+</table>
+@*Tạo link liên kết các trang*@
+<nav class="=blog-pagination justify-content-center d-flex">
+    <div style="text-align:center">
+        <div style="clear: both">
+        </div>
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+        <div id="trang">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+        </div>
+        <style>
+            #trang li {
+                display: inline;
+                text-align: center
+            }
+
+                #trang li  {
+                    text-align: center
+                }
+        </style>
+    </div>
+</nav>
+
+  
