@@ -1,0 +1,10 @@
+﻿./vs
+.vs
+.vs/
+.vs/*
+./.vs/
+.gitattributes
+.vs/
+README.md
+fifness/
+packages/
