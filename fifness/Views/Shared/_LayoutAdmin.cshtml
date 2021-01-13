@@ -47,10 +47,11 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                       
+
                         <a class="logo" href="index.html">
                             <img src="~/img/imgAdmin//icon/logo.png" alt="CoolAdmin" />
                         </a>
+                       
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
                                 <span class="hamburger-inner"></span>
@@ -249,7 +250,7 @@
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                                <input class="au-input au-input--xl" type="text" value="@ViewBag.SearchString" name="searchString" placeholder="Search for datas &amp; reports..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
@@ -312,7 +313,7 @@
                                                     <p>Meeting about new dashboard...</p>
                                                     <span>Cynthia Harvey, Yesterday</span>
                                                 </div>
-                                            </div>
+                                            </div>F
                                             <div class="email__item">
                                                 <div class="image img-cir img-40">
                                                     <img src="~/img/imgAdmin//icon/avatar-04.jpg" alt="Cynthia Harvey" />
@@ -370,21 +371,21 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="~/img/imgAdmin//icon/avatar-01.jpg" alt="John Doe" />
+                                            <img src="~/img/imgAdmin//icon/avatar-01.jpg" alt="" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
+                                            <a class="js-acc-btn" href="#">@Session["USERNAME"]</a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="~/img/imgAdmin//icon/avatar-01.jpg" alt="John Doe" />
+                                                        <img src="~/img/imgAdmin//icon/avatar-01.jpg" alt="@Session["USERNAME"]" />
                                                     </a>
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">john doe</a>
+                                                        <a href="#">@Session["USERNAME"]</a>
                                                     </h5>
                                                     <span class="email">johndoe@example.com</span>
                                                 </div>
@@ -407,9 +408,10 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a href="~/Default/Index">
                                                     <i class="zmdi zmdi-power"></i>Logout
                                                 </a>
+                                                
                                             </div>
                                             <div>
                                                 @using (Html.BeginForm("ChangeCulture","Base"))

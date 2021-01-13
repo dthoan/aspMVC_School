@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index wellcom @WebSecurity.CurrentUserName <a href="@Url.Action("SignOut", "User")">đăng xuất</a></h2>
+<h2>Index wellcom @WebSecurity.CurrentUserName </h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -63,7 +63,8 @@
             @Html.DisplayFor(modelItem => item.NHANXET)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.HINH)
+            <img src="~/img/img_Content/@item.HINH"  />
+            @*@Html.DisplayFor(modelItem => item.HINH)*@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.KHUYENMAI.TENKH)

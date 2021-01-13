@@ -9,6 +9,7 @@ using fifness.Models;
 using OnlineShop.Controllers;
 using PagedList;
 using PagedList.Mvc;
+using fifness.Dao;
 
 namespace fifness.Controllers
 {
@@ -16,10 +17,17 @@ namespace fifness.Controllers
     {
         fifnessEntities db = new fifnessEntities();
         // Xem toàn bộ bài viết
-       public ActionResult Index()
+       public ActionResult Index(string searchString)
         {
+
             var allLoaiTin = from tt in db.BAIVIETs select tt;
-            return View(allLoaiTin);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+               var model = db.BAIVIETs.Where(x => x.TENBV.Contains(searchString) || x.NOIDUNG.Contains(searchString));
+                ViewBag.SearchString = searchString;
+            }
+            return View(db.BAIVIETs.OrderByDescending(x => x.NGAYVIET));
+           
         }
        
         public ActionResult Delete(int id)

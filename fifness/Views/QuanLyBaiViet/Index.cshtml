@@ -1,12 +1,25 @@
 ﻿
+
 @model IEnumerable<fifness.Models.BAIVIET>
 @{
+                /**/
 
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+                ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-@*<h2>Xem Toàn Bộ Bài Viết</h2>*@
+@*@using (Html.BeginForm("index", "QuanLyBaiVietController", FormMethod.Get))
+{
+    <div class="form-header" action="" >
+        <input class="au-input au-input--xl" type="text" value="@ViewBag.SearchString" name="searchString" placeholder="Search for datas &amp; reports..." />
+        <button class="au-btn--submit" type="submit">
+            <i class="zmdi zmdi-search"></i>
+        </button>
+    </div>
+}*@
+
+
 <h2>@Resoucre.Resource.Title</h2>
 
 <p>
@@ -15,39 +28,49 @@
 <table class="table " method="post">
     <tr class="text-center">
 
-    <th class="text-center">
-        @Html.DisplayNameFor(model => model.TENBV)
-    </th>
-    <th class="text-center">
-        @Html.DisplayNameFor(model => model.NOIDUNG)
-    </th>
-    <th class="text-center">
-        @Html.DisplayNameFor(model => model.HINH)
-    </th>
-    <th class="text-center">
-        @Html.DisplayNameFor(model => model.NGAYVIET)
-    </th>
+        <th class="text-center ">
+            @Html.DisplayNameFor(model => model.TENBV)
+        </th>
+        <th class="text-center">
+            <span class="myclass" style="display:inline-block;white-space: nowrap; overflow: hidden; text-overflow: ellipsis;max-width: 13ch;">
+                @Html.DisplayNameFor(model => model.NOIDUNG)
+            </span>
 
-    <th class="text-center">
-        <label>Action</label>
-    </th>
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.HINH)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.NGAYVIET)
+        </th>
+
+        <th class="text-center">
+            <label>Action</label>
+        </th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.TENBV)
+                <span class="myclass" style="display:inline-block;white-space: nowrap; overflow: hidden; text-overflow: ellipsis;max-width: 13ch;">
+                    @Html.DisplayFor(modelItem => item.TENBV)
+                </span>
+
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NOIDUNG)
+                <span class="myclass" style="display:inline-block;white-space: nowrap; overflow: hidden; text-overflow: ellipsis;max-width: 30ch;">
+                    @Html.DisplayFor(modelItem => item.NOIDUNG)
+                </span>
+
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.HINH)
+                <img src="~/img/img_Content/@item.HINH" style="height:60px; width:90px;" />
+              
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NGAYVIET)
-           
+
             <td>
                 <div class="table-data-feature">
                     <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" id="MABV" onclick="location.href='@Url.Action("Details", "QuanLyBaiViet", new { id = item.MABV })'">
@@ -58,19 +81,20 @@
                     <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Edit" id="MABV" onclick="location.href='@Url.Action("Edit", "QuanLyBaiViet", new { id = item.MABV })'">
                         @Resoucre.Resource.Upate
                     </button>
-                    <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Delete" id="MABV" onclick="location.href='@Url.Action("Delete", "QuanLyBaiViet", new { id = item.MABV })'" >
+                    <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Delete" id="MABV" onclick="location.href='@Url.Action("Delete", "QuanLyBaiViet", new { id = item.MABV })'">
                         <p onclick="@Resoucre.Resource.ask">@Resoucre.Resource.Delete</p>
-                       
+
                     </button>
 
                 </div>
             </td>
 
             @*@Html.ActionLink("Sửa", "Edit", new { id = item.MABV }) |
-            @Html.ActionLink("Chi Tiết", "Details", new { id = item.MABV }) |
-            @Html.ActionLink("Xóa", "Delete", new { id = item.MABV }, new { onclick = "return confirm('Are you sure?');" })*@
+                @Html.ActionLink("Chi Tiết", "Details", new { id = item.MABV }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.MABV }, new { onclick = "return confirm('Are you sure?');" })*@
 
         </tr>
+        @*@Html.PagedListPager(Model, page =>Url.Action("Index", new { page }))*@
     }
 
 </table>

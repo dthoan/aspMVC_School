@@ -18,10 +18,11 @@ namespace fifness.Models
             [Display(Name = "MABV", ResourceType = typeof(Resoucre.Resource))]
             public int MABV { get; set; }
 
-            [Display(Name = "TENBV", ResourceType = typeof(Resoucre.Resource))]
+            [Display(Name = "TENBV", ResourceType = typeof(Resoucre.Resource))] 
             public string TENBV { get; set; }
 
             [Display(Name = "NOIDUNG", ResourceType = typeof(Resoucre.Resource))]
+          
             public string NOIDUNG { get; set; }
 
             [Display(Name = "HINH", ResourceType = typeof(Resoucre.Resource))]

@@ -13,7 +13,7 @@ namespace fifness.Controllers
     {
         fifnessEntities db = new fifnessEntities();
         // GET: Blog
-        public ActionResult Blog(int? page)
+        public ActionResult Index(int? page)
             
         {
             // tạo biến số bài viết trong trang

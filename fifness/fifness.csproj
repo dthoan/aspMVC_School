@@ -157,6 +157,8 @@
     <Compile Include="Controllers\admin\QuanLyNhanVienController.cs" />
     <Compile Include="Controllers\public\SingleBlogController.cs" />
     <Compile Include="Controllers\admin\UserController.cs" />
+    <Compile Include="Dao\BaiVietDao.cs" />
+    <Compile Include="Dao\NhanVienDao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -373,10 +375,36 @@
     <Content Include="img\img_Content\bv2.jpg" />
     <Content Include="img\img_Content\bv3.jpg" />
     <Content Include="img\img_Content\bv4.png" />
+    <Content Include="img\img_Content\bv5.jpg" />
     <Content Include="img\img_Content\bv6.jpg" />
+    <Content Include="img\img_Content\bvbb1.jpg" />
+    <Content Include="img\img_Content\bvbb10.jpg" />
+    <Content Include="img\img_Content\bvbb2.jpg" />
+    <Content Include="img\img_Content\bvbb3.htm" />
+    <Content Include="img\img_Content\bvbb4.jpg" />
+    <Content Include="img\img_Content\bvbb5.jpg" />
+    <Content Include="img\img_Content\bvbb6.jpg" />
+    <Content Include="img\img_Content\bvbb8.jpg" />
+    <Content Include="img\img_Content\bvbb9.jpg" />
     <Content Include="img\img_Content\kh1.png" />
     <Content Include="img\img_Content\kh2.png" />
     <Content Include="img\img_Content\kh3.png" />
+    <Content Include="img\img_Content\khbb1.jpg" />
+    <Content Include="img\img_Content\khbb2.jpg" />
+    <Content Include="img\img_Content\khbb3.jpg" />
+    <Content Include="img\img_Content\khmbb2.jpg" />
+    <Content Include="img\img_Content\km1.jpg" />
+    <Content Include="img\img_Content\km2.jpg" />
+    <Content Include="img\img_Content\km3.jpg" />
+    <Content Include="img\img_Content\km4.jpg" />
+    <Content Include="img\img_Content\km5.png" />
+    <Content Include="img\img_Content\km6.jpg" />
+    <Content Include="img\img_Content\km7.png" />
+    <Content Include="img\img_Content\kmbb1.jpg" />
+    <Content Include="img\img_Content\kmbb3.jpg" />
+    <Content Include="img\img_Content\kmbb4.jpg" />
+    <Content Include="img\img_Content\kmbb5.jpg" />
+    <Content Include="img\img_Content\kmbb6.jpg" />
     <Content Include="img\img_Content\mh1.jpg" />
     <Content Include="img\img_Content\mh2.jpg" />
     <Content Include="img\img_Content\mh2.png" />
@@ -390,6 +418,15 @@
     <Content Include="img\img_Content\nv004.jpg" />
     <Content Include="img\img_Content\nv005.jpg" />
     <Content Include="img\img_Content\nv006.jpg" />
+    <Content Include="img\img_Content\nv01.jpg" />
+    <Content Include="img\img_Content\nv02.jpg" />
+    <Content Include="img\img_Content\nv03.jpg" />
+    <Content Include="img\img_Content\nv04.jpg" />
+    <Content Include="img\img_Content\nv05.jpg" />
+    <Content Include="img\img_Content\nv06.jpg" />
+    <Content Include="img\img_Content\pp.jpg" />
+    <Content Include="img\img_Content\tapthu.jpg" />
+    <Content Include="img\img_Content\tt.jpg" />
     <Content Include="img\Layer 3.png" />
     <Content Include="img\Login\bg-01.jpg" />
     <Content Include="img\Login\icons\favicon.ico" />
@@ -917,6 +954,7 @@
     </Content>
     <Content Include="Views\Login\DangKy.cshtml" />
     <Content Include="Scripts\ckeditor\ckeditor.pack" />
+    <Content Include="Views\QuanLyBaiViet\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1300,7 +1338,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Default\About.cshtml" />
     <Content Include="Views\Shared\_LayoutChinh.cshtml" />
-    <Content Include="Views\Blog\Blog.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Default\SingleBlog.cshtml" />
     <Content Include="Views\Default\Courses.cshtml" />
     <Content Include="Views\Default\Gallegy.cshtml" />
