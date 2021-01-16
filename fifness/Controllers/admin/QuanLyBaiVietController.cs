@@ -23,10 +23,10 @@ namespace fifness.Controllers
             var allLoaiTin = from tt in db.BAIVIETs select tt;
             if (!String.IsNullOrEmpty(searchString))
             {
-               var model = db.BAIVIETs.Where(x => x.TENBV.Contains(searchString) || x.NOIDUNG.Contains(searchString));
+                allLoaiTin = db.BAIVIETs.Where(x => x.TENBV.Contains(searchString) || x.NOIDUNG.Contains(searchString));
                 ViewBag.SearchString = searchString;
             }
-            return View(db.BAIVIETs.OrderByDescending(x => x.NGAYVIET));
+            return View(allLoaiTin);
            
         }
        
